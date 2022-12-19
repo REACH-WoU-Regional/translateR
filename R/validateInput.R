@@ -18,11 +18,13 @@ validateInput <-
         }
 
         languages <- languageCodes()
-        
+       
         if(translator == 'Google'){
-            if(!(source.lang %in% unname(unlist(languages['Google'])))){
-                msg <- paste("The source.lang '", source.lang, "' is not a valid Google language code. To see a list of Google language codes, use getGoogleLanguages().", sep = '')
-                stop(msg)
+            if(!is.null(source.lang)){
+                if(!(source.lang %in% unname(unlist(languages['Google'])))){
+                    msg <- paste("The source.lang '", source.lang, "' is not a valid Google language code. To see a list of Google language codes, use getGoogleLanguages().", sep = '')
+                    stop(msg)
+                }
             }
             if(!(target.lang %in% unname(unlist(languages['Google'])))){
                 msg <- paste("The target.lang '", target.lang, "' is not a valid Google language code. To see a list of Google language codes, use getGoogleLanguages().", sep = '')
@@ -30,9 +32,11 @@ validateInput <-
             }
         }    
         if(translator == 'Microsoft'){
-            if(!(source.lang %in% unname(unlist(languages['Microsoft'])))){
-                msg <- paste("The source.lang '", source.lang, "' is not a valid Microsoft language code. To see a list of Microsoft language codes, use getMicrosoftLanguages().", sep = '')
-                stop(msg)
+             if(!is.null(source.lang)){
+                if(!(source.lang %in% unname(unlist(languages['Microsoft'])))){
+                    msg <- paste("The source.lang '", source.lang, "' is not a valid Microsoft language code. To see a list of Microsoft language codes, use getMicrosoftLanguages().", sep = '')
+                    stop(msg)
+                }
             }
             if(!(target.lang %in% unname(unlist(languages['Microsoft'])))){
                 msg <- paste("The target.lang '", target.lang, "' is not a valid Microsoft language code. To see a list of Microsoft language codes, use getMicrosoftLanguages().", sep = '')
