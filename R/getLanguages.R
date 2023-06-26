@@ -7,7 +7,7 @@ function(translator){
 ')
     for(i in 1:length(languages[[translator]])){
         code <- languages[[translator]][i]
-        cat(paste(gsub('_', ' ', names(code)), paste(rep(" ", 22 - nchar(names(code))), collapse=''), code))
+        cat(paste(gsub('_', ' ', names(code)), paste(rep(" ", 25 - nchar(names(code))), collapse=''), code))
         cat('\n')
     }
 }
